@@ -1,10 +1,20 @@
+.c-accordion__panel {
+    &[aria-hidden="true"] {
+        visibility: hidden;
+        height: 0;
+    }
 
-.c-nav__list {
-    list-style: none;
-    display: flex;
+    &[aria-hidden="false"] {
+        visibility: visible;
+    }
 }
 
-.c-nav__link {
-    color: color($co-primary, 5);
-    padding: 1rem;
+.c-accordion--is-ready {
+    .c-accordion__header {
+        cursor: pointer;
+    }
+
+    .c-accordion__panel {
+        overflow: hidden;
+    }
 }
