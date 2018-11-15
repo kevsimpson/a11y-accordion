@@ -1,0 +1,44 @@
+/* ===========================================================
+	Abstracts - Spacing
+=========================================================== */
+
+$base: 9px;
+
+$sizes: (
+    2xs: rem(round($base * 0.5)),
+    xs: rem(round($base)),
+    sm: rem(round($base * 1.5)),
+    md: rem(round($base * 2.5)),
+    lg: rem(round($base * 4)),
+    xl: rem(round($base * 6.5)),
+    2xl: rem(round($base * 10.5))
+);
+
+@function spacing($variant: md) {
+    $fetched-value: map-get($sizes, $variant);
+
+    @if type-of($fetched-value) == number {
+        @return $fetched-value;
+    }
+
+    @else {
+        @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($sizes)}';
+    }
+}
+
+$un-section-sm: spacing(lg);
+$un-section-md: spacing(xl);
+$un-section-lg: spacing(2xl);
+
+$un-flow-margin:		spacing(sm);
+$un-heading-margin:	    $un-flow-margin;
+$un-paragraph-margin:	$un-flow-margin;
+$un-list-margin:		$un-flow-margin;
+
+$un-wraps: (
+    sm: 680px,
+    md: 800px,
+    lg: 1000px,
+    xl: 1200px,
+    2xl: 1480px,
+);

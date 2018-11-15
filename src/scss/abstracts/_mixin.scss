@@ -1,0 +1,131 @@
+/* ===========================================================
+	Abstracts - Mixins
+=========================================================== */
+
+// Typography
+// ======================================================== */
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+    $u1: unit($min-font-size);
+    $u2: unit($max-font-size);
+
+    @if $u1 == $u2 {
+        & {
+            font-size: rem($min-font-size);
+
+            @include respond-min-max(em($fs-min-screen), em($fs-max-screen)) {
+                font-size: calc(#{rem($min-font-size)} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{rem($fs-min-screen)}) / #{strip-unit($fs-max-screen - $fs-min-screen)}));
+            }
+
+            @include respond-min(em($fs-max-screen)) {
+                font-size: rem($max-font-size);
+            }
+        }
+    }
+
+    @else {
+        @error "Fluid-type: Detected mixed units. Please use the same units for all parameters. " + $u1 +", " + $u2 + ", " + $u3 +", "+ $u4;
+    }
+}
+
+// Breakpoints
+// ======================================================== */
+
+@mixin respond-max($breakpoint) {
+    $max-width: $breakpoint - em(1px);
+
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}
+
+@mixin respond-min($breakpoint) {
+    $min-width: $breakpoint;
+
+    @media screen and (min-width: $min-width) {
+        @content;
+    }
+}
+
+@mixin respond-min-max($breakpoint-min, $breakpoint-max) {
+    $min-width: $breakpoint-min;
+    $max-width: $breakpoint-max - em(1px);
+
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+        @content;
+    }
+}
+
+/*
+	example usage:
+	h1 {
+		font-size: 2em;
+		@include respond-min($mq-sm){
+			font-size: 3em;
+		}
+	}
+	@include respond-min-max($mq-sm, $mq-md){
+		h1 { font-size: 3em; }
+	}
+*/
+
+/**
+ *	High resolution device media query
+ *	http://davidtheclark.github.io/scut/#hd_breakpoint
+ */
+@mixin hi-res($ratio: 2) {
+    @media (-o-min-device-pixel-ratio: #{$ratio}/1),
+        (-webkit-min-device-pixel-ratio: #{$ratio}),
+        (min-resolution: #{round(96 * $ratio)}dpi) {
+        @content;
+    }
+}
+
+// Utilities
+// ======================================================== */
+
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/**
+ *  Hiding visually (keep accessibility)
+ *  http://h5bp.com/v
+ *  http://davidtheclark.github.io/scut/#hide_visually
+ */
+@mixin visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@mixin focus-outline($color: inherit, $width: 1px) {
+    outline-color: $color;
+    outline-width: rem($width);
+    outline-style: solid;
+    outline-offset: rem($width * 4);
+}
+
+@mixin background-icon($icon, $content, $width: 1em, $height: 1em) {
+    background-image: url($icon);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75% auto;
+    // Text for screen readers
+    content: $content;
+    display: inline-block;
+    height: $height;
+    overflow: hidden;
+    text-indent: $width;
+    white-space: nowrap;
+    width: $width;
+}

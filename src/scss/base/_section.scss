@@ -1,0 +1,42 @@
+/* ===========================================================
+	Base - Section
+=========================================================== */
+
+.b-section {
+    padding-bottom: $un-section-sm;
+    padding-top: $un-section-sm;
+
+    @include respond-min-max($mq-sm, $mq-md) {
+        padding-bottom: $un-section-md;
+        padding-top: $un-section-md;
+    }
+
+    @include respond-min($mq-md) {
+        padding-bottom: $un-section-lg;
+        padding-top: $un-section-lg;
+    }
+}
+
+.b-section--bottom {
+    padding-bottom: $un-section-sm;
+
+    @include respond-min-max($mq-sm, $mq-md) {
+        padding-bottom: $un-section-md;
+    }
+
+    @include respond-min($mq-md) {
+        padding-bottom: $un-section-lg;
+    }
+}
+
+.b-section--top {
+    padding-top: $un-section-sm;
+
+    @include respond-min-max($mq-sm, $mq-md) {
+        padding-top: $un-section-md;
+    }
+
+    @include respond-min($mq-md) {
+        padding-top: $un-section-lg;
+    }
+}

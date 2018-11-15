@@ -1,0 +1,10 @@
+
+.c-nav__list {
+    list-style: none;
+    display: flex;
+}
+
+.c-nav__link {
+    color: color($co-primary, 5);
+    padding: 1rem;
+}

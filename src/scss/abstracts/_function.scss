@@ -1,0 +1,93 @@
+/* ===========================================================
+    Abstracts - Functions
+=========================================================== */
+
+/**
+ *  Strips the unit from a given value
+ */
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+/**
+ *	Calculates intrinsic ratios
+ */
+@function int-ratio($width, $height) {
+    @return ($height / $width) * 100%;
+}
+
+/**
+ *  convert pixels to em using a context
+ *  example:
+ *  font-size: em( 14px ); // 0.875em
+ */
+@function em($pixels, $context: 16px) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1em;
+}
+
+/**
+ *  convert pixels to rem
+ *  example:
+ *  font-size: rem( 14px ); // 0.875em
+ */
+@function rem($pixels, $context: 16px) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1rem;
+}
+
+@function px($rem, $context: 16) {
+    @return strip-unit($rem) * $context;
+}
+
+/**
+ * Returns the list of available names in a given map.
+ * @param {Map} $map - The map of data to list the names from.
+ * @param {Number} $map - The level of depth to get names from.
+ * @return {String} The list of names in the map.
+ * src: https://github.com/Shopify/polaris/blob/master/src/styles/foundation/utilities.scss
+ */
+@function available-names($map, $level: 1) {
+    @if type-of($map) != 'map' {
+        @return null;
+    }
+
+    $output: '';
+    $newline: '\A ';
+
+    @if $level == 1 {
+        @each $key, $value in $map {
+            $output: $output +
+                '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+        }
+    }
+
+    @else {
+        $output: '(';
+        $i: 1;
+
+        @each $key, $value in $map {
+            $sep: if($i < length($map), ', ', '');
+            $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
+            $i: $i + 1;
+        }
+
+        $output: $output + ')';
+    }
+
+    @return $output;
+}

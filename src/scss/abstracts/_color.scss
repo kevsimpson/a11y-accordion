@@ -1,0 +1,84 @@
+/* ===========================================================
+    Abstracts - Colors
+=========================================================== */
+
+@function color($colorMap, $variant: 5) {
+    $fetched-value: map-get($colorMap, $variant);
+
+    @if type-of($fetched-value) == color {
+        @return $fetched-value;
+    }
+
+    @else {
+        @error 'Color variant `#{$variant}` not found in ${colorMap}. Available variants: #{available-names($colorMap)}';
+    }
+}
+
+$co-white: #fff;
+$co-black:  #000;
+
+$co-light: (
+    0: #f4f6f8,
+    1: darken(#f4f6f8, 5),
+    2: darken(#f4f6f8, 10),
+);
+
+$co-dark: (
+    0: lighten(#0f1d2b, 10),
+    1: lighten(#0f1d2b, 5),
+    2: #0f1d2b,
+);
+
+$co-social: (
+    github: #171515,
+    medium: #02b875,
+    google: #4285f4,
+    facebook: #3b5998,
+    twitter: #1da1f2,
+    vimeo: #1ab7ea,
+    linkedin: #007bb5,
+    twitch: #6441a4,
+    dribbble: #ea4c89,
+    instagram: #c32aa3,
+    pinterest: #bd081c,
+    googleplus: #db4437,
+    soundcloud: #f50,
+    youtube: #f00,
+);
+
+$co-green: (
+    0: #e5f6ee,
+    1: #c8eddc,
+    2: #a8e3c8,
+    3: #83d7b0,
+    4: #57c994,
+    5: #1fb871,
+    6: #1ca666,
+    7: #189159,
+    8: #14784a,
+    9: #0e5635
+);
+
+// Color assignments
+// ======================================================== */
+
+$co-primary:                $co-green;
+$co-secondary:              $co-dark;
+
+$co-body-background:        color($co-light, 0);
+$co-heading-text:           color($co-dark, 0);
+$co-body-text:              color($co-dark, 1);
+$co-text-muted:             rgba($co-body-text, 0.5);
+
+$co-focus:                  color($co-primary, 1);
+$co-focus-light:            color($co-light, 0);
+$co-focus-dark:             color($co-dark, 0);
+
+$co-selection:              rgba(color($co-primary, 2), 0.5);
+$co-placeholder:            rgba($co-body-text, 0.5);
+$co-disabled:               color($co-dark, 0);
+
+$co-error:                  salmon;
+$co-info:                   dodgerblue;
+$co-success:                aquamarine;
+$co-warning:                gold;

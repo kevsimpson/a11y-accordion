@@ -1,0 +1,10 @@
+/* ===========================================================
+	Base - Figure
+=========================================================== */
+
+$figure-margin-bottom: $un-flow-margin;
+
+figure {
+    // Apply a consistent margin strategy (matches our type styles).
+    margin: 0 0 $figure-margin-bottom;
+}

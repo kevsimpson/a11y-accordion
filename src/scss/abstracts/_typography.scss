@@ -1,0 +1,59 @@
+/* ===========================================================
+    Abstracts - Typography
+=========================================================== */
+
+$ff-monospace:              SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$ff-native-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$ff-primary-fallback:		$ff-native-sans-serif;
+$ff-primary-webfont:		'Ubuntu';
+
+// Font scaling
+// ? below units must be set in pixels
+// ? units will be converted in the fluid-type mixin
+// ======================================================== */
+
+$fs-min:				16px;
+$fs-max:				18px;
+
+$fs-scale-sm: 			1.067;
+$fs-scale-lg: 			1.25;
+
+$fs-min-screen:			375px;
+$fs-max-screen:			1024px;
+
+$fs-line-height:		1.7;
+$fs-heading-line-height:1.2;
+
+$fs-small:              80%;
+
+// Font weight
+// ======================================================== */
+
+$fw-lighter:            100;
+$fw-light:              300;
+$fw-normal:             400;
+$fw-bold:               700;
+$fw-bolder:				900;
+
+// Font scales
+// ======================================================== */
+
+$fs-3xs-min: 		$fs-min;
+$fs-2xs-min:	 	$fs-3xs-min		*	$fs-scale-sm;
+$fs-xs-min: 		$fs-2xs-min		*	$fs-scale-sm;
+$fs-sm-min: 		$fs-xs-min		*	$fs-scale-sm;
+$fs-md-min: 		$fs-sm-min		*	$fs-scale-sm;
+$fs-lg-min: 		$fs-md-min		*	$fs-scale-sm;
+$fs-xl-min:			$fs-lg-min		*	$fs-scale-sm;
+$fs-2xl-min:		$fs-xl-min		*	$fs-scale-sm;
+$fs-3xl-min: 		$fs-2xl-min		*	$fs-scale-sm;
+
+$fs-3xs-max: 		$fs-max;
+$fs-2xs-max:	 	$fs-3xs-max		*	$fs-scale-lg;
+$fs-xs-max: 		$fs-2xs-max		*	$fs-scale-lg;
+$fs-sm-max: 		$fs-xs-max		*	$fs-scale-lg;
+$fs-md-max: 		$fs-sm-max		*	$fs-scale-lg;
+$fs-lg-max: 		$fs-md-max		*	$fs-scale-lg;
+$fs-xl-max:			$fs-lg-max		*	$fs-scale-lg;
+$fs-2xl-max:		$fs-xl-max		*	$fs-scale-lg;
+$fs-3xl-max: 		$fs-2xl-max		*	$fs-scale-lg;
