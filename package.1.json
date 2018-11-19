@@ -1,0 +1,32 @@
+{
+  "name": "a11y-accordion",
+  "version": "0.1.0",
+  "description": "a11y-accordion",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kevsimps@bitbucket.org/kevsimps/a11y-accordion.git"
+  },
+  "author": "Kev Simpson",
+  "homepage": "https://bitbucket.org/kevsimps/a11y-accordion#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "posthtml-extend": "^0.3.0",
+    "posthtml-include": "^1.2.0",
+    "sass": "^1.15.0",
+    "stylelint": "^9.8.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.4.0"
+  },
+  "dependencies": {
+    "barba.js": "^1.0.0",
+    "fr-accordion": "^1.0.6",
+    "jquery": "^3.3.1"
+  }
+}

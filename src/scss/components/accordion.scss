@@ -18,3 +18,16 @@
         overflow: hidden;
     }
 }
+
+//
+
+.c-accordion__header {
+    background-color: color($co-primary, 5);
+    margin-bottom: 0;
+}
+
+.c-accordion__panel {
+    transition:
+        height 0.25s ease-out,
+        visibility 0.25s ease-out;
+}
