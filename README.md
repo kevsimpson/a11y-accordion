@@ -81,26 +81,26 @@ myAccordion.init();
 ```js
 const accordionContainer = document.querySelector('.js-accordion');
 const myAccordion = Fraccordion(accordionContainer, {
-	// String - Accordion header elements converted to focusable, togglable elements
-	headerSelector: '.js-accordion__header',
+    // String - Accordion header elements converted to focusable, togglable elements
+    headerSelector: '.js-accordion__header',
 
-	// String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
-	headerIdPrefix: 'accordion-header',
+    // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
+    headerIdPrefix: 'accordion-header',
 
-	// String - Accordion panel elements to expand/collapse
-	panelSelector: '.js-accordion__panel',
+    // String - Accordion panel elements to expand/collapse
+    panelSelector: '.js-accordion__panel',
 
-	// String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
-	panelIdPrefix: 'accordion-panel',
+    // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
+    panelIdPrefix: 'accordion-panel',
 
-	// Boolean - If set to false, all accordion panels will be closed on init()
-	isFirstPanelOpen: true,
+    // Boolean - If set to false, all accordion panels will be closed on init()
+    isFirstPanelOpen: true,
 
-	// Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
-	isMultiSelectable: true,
+    // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
+    isMultiSelectable: true,
 
-	// String - Class name that will be added to the selector when the component has been initialised
-	readyClass: 'c-accordion--is-ready',
+    // String - Class name that will be added to the selector when the component has been initialised
+    readyClass: 'c-accordion--is-ready',
 });
 ```
 
