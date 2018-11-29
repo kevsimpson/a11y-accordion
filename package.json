@@ -1,7 +1,7 @@
 {
-  "name": "a11y-accordion",
-  "version": "0.1.0",
-  "description": "a11y-accordion",
+  "name": "@kevsimpson/accordion",
+  "version": "1.0.0",
+  "description": "a11y accordion",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
