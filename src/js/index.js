@@ -11,7 +11,7 @@ class Accordion {
         readyClass = 'c-accordion--is-ready',
     } = {}) {
         if (!accordionContainer) {
-            console.error('Accordion container node is required');
+            console.error('Accordion container node is required'); // eslint-disable-line
             return;
         }
 
@@ -26,7 +26,6 @@ class Accordion {
         this.readyClass = readyClass;
 
         this.bindMethods();
-        this.init();
     }
 
     static getPanelHeight(panel) {
@@ -60,18 +59,81 @@ class Accordion {
         panel.style.height = 0;
     }
 
+    setHeaderFocus(index) {
+        // remove focusability from inactive headers
+        this.headers.forEach((header) => {
+            header.setAttribute('tabindex', -1);
+        });
+        // set active header focus
+        this.headers[index].setAttribute('tabindex', 0);
+        this.headers[index].focus();
+    }
+
+
+    eventHeaderClick(event) {
+        this.togglePanel(event.target);
+    }
+
+    eventHeaderKeyUp(event) {
+        const currentHeader = event.target;
+        const isModifierKey = event.metaKey || event.altKey;
+        const currentHeaderIndex = [].indexOf.call(this.headers, currentHeader);
+
+        // don't catch key events when ⌘ or Alt modifier is present
+        if (isModifierKey) return;
+
+        // catch enter/space, left/right and up/down arrow key events
+        // if new panel show it, if next/prev move focus
+        switch (event.keyCode) {
+        case 13:
+        case 32:
+            this.togglePanel(currentHeader);
+            event.preventDefault();
+            break;
+        case 37:
+        case 38: {
+            const previousHeaderIndex = (currentHeaderIndex === 0)
+                ? this.headers.length - 1
+                : currentHeaderIndex - 1;
+            this.setHeaderFocus(previousHeaderIndex);
+            event.preventDefault();
+            break;
+        }
+        case 39:
+        case 40: {
+            const nextHeaderIndex = (currentHeaderIndex < this.headers.length - 1)
+                ? currentHeaderIndex + 1
+                : 0;
+            this.setHeaderFocus(nextHeaderIndex);
+            event.preventDefault();
+            break;
+        }
+        default:
+            break;
+        }
+    }
+
     addEventListeners() {
         this.headers.forEach((accordionHeader) => {
-            accordionHeader.addEventListener('click', event => this.togglePanel(event.target));
+            accordionHeader.addEventListener('click', this.eventHeaderClick);
+            accordionHeader.addEventListener('keyup', this.eventHeaderKeyUp);
         });
     }
 
     removeEventListeners() {
+        this.headers.forEach((accordionHeader) => {
+            accordionHeader.removeEventListener('click', this.eventHeaderClick);
+            accordionHeader.removeEventListener('keyup', this.eventHeaderKeyUp);
+        });
     }
 
     bindMethods() {
         this.applyAlly = this.applyAlly.bind(this);
         this.removeAlly = this.removeAlly.bind(this);
+        this.togglePanel = this.togglePanel.bind(this);
+        this.eventHeaderClick = this.eventHeaderClick.bind(this);
+        this.eventHeaderKeyUp = this.eventHeaderKeyUp.bind(this);
+        this.setHeaderFocus = this.setHeaderFocus.bind(this);
     }
 
     applyAlly() {
@@ -156,23 +218,27 @@ class Accordion {
 
     destroy() {
         this.removeAlly();
-        // remove ready class
+        this.removeEventListeners();
         this.accordionContainer.classList.remove(this.readyClass);
     }
 
     init() {
+        if (!this.accordionContainer) return;
+        const firstHeader = this.headers[0];
         this.applyAlly();
         this.addEventListeners();
         this.hideAllPanels();
+        if (this.isFirstPanelOpen) {
+            this.togglePanel(firstHeader);
+        } else {
+            firstHeader.setAttribute('tabindex', 0);
+        }
         this.accordionContainer.classList.add(this.readyClass);
     }
 }
 
 const accordionInstance = new Accordion(document.querySelector('.js-accordion'));
-
-// ////////////////////
-// https://www.youtube.com/watch?v=hw4mo7EALOw
-// ///////////////////
+accordionInstance.init();
 
 export default Accordion;
 

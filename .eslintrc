@@ -4,11 +4,12 @@
         "browser": true,
         "es6": true
     },
+    "plugins": ["compat"],
     "extends": [
         "eslint-config-airbnb-base"
     ],
     "rules": {
-        "compat/compat": "error",
+        "compat/compat": "warn",
         "indent": ["error", 4],
         "import/no-unresolved": false
     }
