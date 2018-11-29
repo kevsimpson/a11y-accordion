@@ -1,0 +1,55 @@
+{
+  "_from": "@kevsimpson/accordion",
+  "_id": "@kevsimpson/accordion@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-0zJcAfC6DZYHgOHD1LR/5Scf7UcL2J/xwSqlMOZA4l2gh8wHEAgyJvxC39iRNHDTtk8QJhS5ue2nd01DkewibA==",
+  "_location": "/@kevsimpson/accordion",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@kevsimpson/accordion",
+    "name": "@kevsimpson/accordion",
+    "escapedName": "@kevsimpson%2faccordion",
+    "scope": "@kevsimpson",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@kevsimpson/accordion/-/accordion-1.0.0.tgz",
+  "_shasum": "513bc619c7f4c594fb4aedbf968db8c10df1f71c",
+  "_spec": "@kevsimpson/accordion",
+  "_where": "/Users/kev/Sites/temp",
+  "author": {
+    "name": "Kev Simpson"
+  },
+  "bugs": {
+    "url": "https://github.com/kevsimpson/a11y-accordion/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "a11y accordion",
+  "homepage": "https://github.com/kevsimpson/a11y-accordion#readme",
+  "keywords": [
+    "accordion",
+    "accessible",
+    "es2015",
+    "es6"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@kevsimpson/accordion",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevsimpson/a11y-accordion.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "style": "accordion.scss",
+  "version": "1.0.0"
+}

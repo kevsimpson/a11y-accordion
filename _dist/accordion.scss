@@ -1,0 +1,25 @@
+.c-accordion__panel {
+    &[aria-hidden="true"] {
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &[aria-hidden="false"] {
+        opacity: 1;
+    }
+}
+
+.c-accordion--is-ready {
+    .c-accordion__header {
+        cursor: pointer;
+    }
+
+    .c-accordion__panel {
+        overflow: hidden;
+        will-change: height, opacity;
+        transition:
+            height 0.25s ease-out,
+            opacity 0.25s ease-out;
+    }
+}
