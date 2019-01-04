@@ -13,7 +13,7 @@ $ npm install @kevsimpson/accordion
 Accordions rely on header and panel pairs, wrapped in a single container.
 
 ```html
-<section class="c-accordion js-accordion">
+<div class="c-accordion js-accordion">
     <h2 id="accordion-header-1" class="c-accordion__header js-accordion__header">Accordion header 1</h2>
     <div id="accordion-panel-1" class="c-accordion__panel js-accordion__panel">
         ...
@@ -26,7 +26,7 @@ Accordions rely on header and panel pairs, wrapped in a single container.
     <div id="accordion-panel-3" class="c-accordion__panel js-accordion__panel">
         ...
     </div>
-</section>
+</div>
 
 ```
 
