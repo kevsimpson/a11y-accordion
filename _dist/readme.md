@@ -13,7 +13,7 @@ $ npm install @kevsimpson/accordion
 Accordions rely on header and panel pairs, wrapped in a single container.
 
 ```html
-<section class="c-accordion js-accordion">
+<div class="c-accordion js-accordion">
     <h2 id="accordion-header-1" class="c-accordion__header js-accordion__header">Accordion header 1</h2>
     <div id="accordion-panel-1" class="c-accordion__panel js-accordion__panel">
         ...
@@ -26,8 +26,7 @@ Accordions rely on header and panel pairs, wrapped in a single container.
     <div id="accordion-panel-3" class="c-accordion__panel js-accordion__panel">
         ...
     </div>
-</section>
-
+</div>
 ```
 
 An accordion effect can be achieved with minimal `SCSS` styles.
@@ -103,6 +102,23 @@ const myAccordion = Fraccordion(accordionContainer, {
     // String - Class name that will be added to the selector when the component has been initialised
     readyClass: 'c-accordion--is-ready',
 });
+```
+
+## Initial panels open by data attributes
+
+Adding a `data-accordion-is-open="true|false"` attribute will initiate the plugin with the panel open / closed.
+
+```html
+<div class="c-accordion js-accordion">
+    <h2 id="accordion-header-1" class="c-accordion__header js-accordion__header" data-accordion-is-open="false">Closed accordion</h2>
+    <div id="accordion-panel-1" class="c-accordion__panel js-accordion__panel">
+        ...
+    </div>
+    <h2 id="accordion-header-2" class="c-accordion__header js-accordion__header" data-accordion-is-open="true">Open panel</h2>
+    <div id="accordion-panel-2" class="c-accordion__panel js-accordion__panel">
+        ...
+    </div>
+</div>
 ```
 
 ---

@@ -220,6 +220,14 @@ class Accordion {
         });
     }
 
+    showInitialOpenPanels() {
+        this.headers.forEach((header) => {
+            if (header.getAttribute('data-accordion-is-open') === 'true') {
+                this.showPanel(header);
+            }
+        });
+    }
+
     destroy() {
         this.removeAlly();
         this.removeEventListeners();
@@ -231,14 +239,21 @@ class Accordion {
             !this.accordionContainer
             || this.accordionContainer.classList.contains(this.readyClass)
         ) return;
-        const firstHeader = this.headers[0];
         this.applyAlly();
         this.addEventListeners();
         this.hideAllPanels();
+
+        const firstHeader = this.headers[0];
         if (this.isFirstPanelOpen) {
-            this.togglePanel(firstHeader);
+            if (firstHeader.getAttribute('data-accordion-is-open') !== 'false') {
+                this.showPanel(firstHeader);
+            }
         } else {
             firstHeader.setAttribute('tabindex', 0);
+        }
+
+        if (this.isMultiSelectable) {
+            this.showInitialOpenPanels();
         }
         this.accordionContainer.classList.add(this.readyClass);
     }
