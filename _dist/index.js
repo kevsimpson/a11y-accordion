@@ -242,6 +242,7 @@ class Accordion {
         this.applyAlly();
         this.addEventListeners();
         this.hideAllPanels();
+        this.accordionContainer.classList.add(this.readyClass);
 
         const firstHeader = this.headers[0];
         if (this.isFirstPanelOpen) {
@@ -255,7 +256,6 @@ class Accordion {
         if (this.isMultiSelectable) {
             this.showInitialOpenPanels();
         }
-        this.accordionContainer.classList.add(this.readyClass);
     }
 }
 
